@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчёт по созданию видеоролика "Gazyava Land"</title>
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --text-main: #c5c6c7;
+            --text-highlight: #ffffff;
+            --accent-cyan: #00e5ff;
+            --accent-magenta: #ff007f;
+            --border-color: #45a29e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-cyan);
+        }
+
+        h1 {
+            color: var(--text-highlight);
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 span.cyan { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
+        h1 span.magenta { color: var(--accent-magenta); text-shadow: 0 0 10px var(--accent-magenta); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h2 {
+            color: var(--text-highlight);
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 15px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--accent-cyan);
+            margin-top: 25px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .prompt-box {
+            background-color: #0b0c10;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #a8dadc;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            border: 2px solid var(--accent-magenta);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+
+        .note {
+            background-color: rgba(255, 0, 127, 0.1);
+            border-left: 4px solid var(--accent-magenta);
+            padding: 15px;
+            margin: 20px 0;
+            color: #ff80bf;
+        }
+
+        .note code {
+            background-color: #0b0c10;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-cyan);
+            font-family: 'Courier New', monospace;
+        }
+
+        .storyboard {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .storyboard .frame {
+            min-width: 200px;
+            height: 120px;
+            background: linear-gradient(135deg, #1f2833 0%, #0b0c10 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Отчёт: <span class="cyan">Gazyava</span> <span class="magenta">Land</span></h1>
+        <p>Техническая документация по генерации и монтажу коммерческого видеоролика</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>1. Порядок действий (Workflow)</h2>
+            <p>Процесс создания финального видеоролика разделён на 5 ключевых этапов:</p>
+            <ol>
+                <li><strong>Подготовка и генерация референсов:</strong> Создание базового статичного изображения бутылки с помощью Midjourney v6 для сохранения идеального стиля и читаемости этикетки.</li>
+                <li><strong>Генерация видео (Image-to-Video):</strong> Загрузка референса в нейросеть (Runway Gen-3 Alpha / Kling AI / Luma Dream Machine) и применение текстового промпта для анимации фонтана и появления текста.</li>
+                <li><strong>Генерация звукового дизайна (Sound Design):</strong> Создание или поиск аудиоэффектов (шипение, всплеск, гул неона) с использованием ElevenLabs, AudioLDM или стоковых библиотек.</li>
+                <li><strong>Монтаж и композитинг:</strong> Сборка сгенерированных клипов в Adobe Premiere Pro / After Effects. Синхронизация звука, наложение эффектов свечения (Glow) на текст, цветокоррекция и финальное затемнение.</li>
+                <li><strong>Финальный рендер:</strong> Экспорт видео в формате MP4 (H.264/H.265) с разрешением 1920x1080 или 4K.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>2. Используемые ресурсы и промпты</h2>
+            
+            <h3>🛠 Инструменты (Стек технологий)</h3>
+            <ul>
+                <li><strong>Генерация изображений:</strong> Midjourney v6</li>
+                <li><strong>Генерация видео:</strong> Runway Gen-3 Alpha / Kling AI</li>
+                <li><strong>Генерация аудио:</strong> ElevenLabs (Sound Effects) / Epidemic Sound</li>
+                <li><strong>Монтаж:</strong> Adobe After Effects / CapCut Desktop</li>
+            </ul>
+
+            <h3>📝 Основной промпт для генерации видео</h3>
+            <div class="prompt-box">Photorealistic 3D commercial beverage advertisement, 10 seconds, locked centered camera, light blue gradient studio backdrop.
+
+0-2s: In a dark studio, spotlights click on one by one in random order, flickering softly with natural white color rendering, revealing a cold glass soda bottle with a black-and-red label reading "Gazyava" in white script, covered in condensation droplets.
+
+2-4s: The bottle erupts — a tall geyser fountain of fizzy amber cola shoots straight upward, like Mentos dropped into soda; droplets and carbonation bubbles burst outward. Loud fizzing, bubbling and splashing sound.
+
+4-7s: The rising splash morphs mid-air into giant glossy inflated bubble letters: "GAZYAVA" in polished cyan-blue chrome, "LAND" in magenta-pink chrome directly below, forming the logo above the bottle. Soft whoosh as the letters solidify.
+
+7-9s: The cola fountain keeps streaming straight up behind the logo; the letters begin to glow brighter and brighter, neon intensifying with a subtle rising hum.
+
+9-10s: The spotlights click off one by one, the studio goes dark, the glowing logo fades out. Final frame.
+
+Style: hyper-realistic 3D render, high-end product photography, soft rim light, true-to-life amber cola tones, crisp readable text, no camera movement.</div>
+
+            <h3>🔊 Промпт для генерации аудио (Sound FX)</h3>
+            <div class="prompt-box">Cinematic sound design. Starts with random mechanical spotlight clicks and soft electrical hum. Suddenly, a loud, aggressive fizzy soda eruption, mentos in coke splash, heavy bubbling and liquid splashing. Mid-air magical whoosh as liquid morphs into solid. Rising intense neon electrical hum and glowing synth bass. Ends with heavy mechanical clicks and sudden silence.</div>
+        </section>
+
+        <section>
+            <h2>3. Итоговое видео</h2>
+            <p>Ниже представлен финальный смонтированный видеоролик, созданный на основе описанного выше технического задания.</p>
+            
+            <div class="note">
+                <strong>⚠ Важно:</strong> Видеофайл должен находиться <strong>в той же папке</strong>, что и этот HTML-документ, и называться <code>gazyava_land_final.mp4</code>. Если ваше видео имеет другое имя — переименуйте его или измените атрибут <code>src</code> в теге <code>&lt;video&gt;</code> ниже.
+            </div>
+
+            <div class="video-container">
+                <video controls preload="metadata" playsinline>
+                    <source src="./gazyava_land_final.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает элемент video. 
+                    <a href="./gazyava_land_final.mp4">Скачать видео</a>
+                </video>
+            </div>
+
+            <h3>Раскадровка (Storyboard)</h3>
+            <p>Ключевые кадры, иллюстрирующие переходы и визуальный стиль:</p>
+            <div class="storyboard">
+                <div class="frame">0–2с<br>Бутылка в лучах прожекторов</div>
+                <div class="frame">2–4с<br>Фонтан колы erupts</div>
+                <div class="frame">4–7с<br>Появление надписи Gazyava Land</div>
+                <div class="frame">7–9с<br>Неоновое свечение усиливается</div>
+                <div class="frame">9–10с<br>Прожекторы гаснут, финал</div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Gazyava Land Production. Отчёт сгенерирован для внутреннего использования.</p>
+    </footer>
+
+</body>
+</html>
